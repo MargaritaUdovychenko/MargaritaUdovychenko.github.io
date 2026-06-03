@@ -41,8 +41,10 @@
     html.lang-en .b-de { display: none; }
     html.lang-en .t-en { display: inline; }
     html.lang-en .b-en { display: block; }
-    html.lang-en span.badge.t-en { display: inline-flex; }
+    span.badge.t-en { display: none; }
     span.badge.t-de { display: inline-flex; }
+    html.lang-en span.badge.t-de { display: none; }
+    html.lang-en span.badge.t-en { display: inline-flex; }
 
     /* ── Navigation ── */
     nav {
@@ -471,7 +473,7 @@
       position: relative;
     }
     .modal-close {
-      position: fixed; top: 1.25rem; right: 1.5rem; z-index: 600;
+      position: absolute; top: 1.25rem; right: 1.25rem; z-index: 600;
       background: var(--pink); color: #fff;
       border: none; cursor: pointer;
       width: 44px; height: 44px;
@@ -698,15 +700,15 @@
           </h2>
           <!-- DE -->
           <div class="b-de">
-            <p>UX/UI Designerin mit 4+ Jahren Erfahrung und einem Hintergrund im Projektmanagement, der mich früh gelehrt hat: gutes Design endet nicht beim Pixel.</p>
-            <p>Bei POLYAS habe ich UX/UI für sechs B2B- und SaaS-Produkte verantwortet – von der ersten Nutzerrecherche bis zur fertigen Umsetzung und Erfolgsmessung. Was mich antreibt: der Moment, wenn ein komplexes Problem plötzlich eine klare, elegante Lösung bekommt.</p>
-            <p>Ich denke in Systemen, arbeite gerne an der Schnittstelle von Nutzer, Business und Technologie – und bringe Teams dazu, gemeinsam eine Lösung zu entwickeln, der alle vertrauen.</p>
+            <p>Product Designerin mit 4+ Jahren Erfahrung und einem Hintergrund im Projektmanagement, der mich früh gelehrt hat: gutes Design endet nicht beim Pixel – es beginnt mit dem richtigen Problem.</p>
+            <p>Bei POLYAS bin ich Teil des Product Teams und verantworte Design für B2B- und SaaS-Produkte – von der Strategie über Research und Konzeption bis zur Umsetzung und Erfolgsmessung. Was mich antreibt: der Moment, wenn ein komplexes Problem plötzlich eine klare, elegante Lösung bekommt.</p>
+            <p>Ich denke in Produkt, arbeite an der Schnittstelle von Nutzer, Business und Technologie – und bringe Teams dazu, gemeinsam eine Lösung zu entwickeln, der alle vertrauen.</p>
           </div>
           <!-- EN -->
           <div class="b-en">
-            <p>UX/UI Designer with 4+ years of experience and a background in project management that taught me early on: good design doesn't stop at the pixel.</p>
-            <p>At POLYAS, I owned UX/UI across six B2B and SaaS products – from initial user research to finished implementation and measurement. What drives me: that moment when a complex problem suddenly finds a clear, elegant solution.</p>
-            <p>I think in systems, thrive at the intersection of user, business, and technology – and help teams build a shared solution they all believe in.</p>
+            <p>Product Designer with 4+ years of experience and a background in project management that taught me early on: good design doesn't stop at the pixel – it starts with the right problem.</p>
+            <p>At POLYAS, I'm part of the Product Team, owning design for B2B and SaaS products – from strategy through research and concept to implementation and measurement. What drives me: that moment when a complex problem suddenly finds a clear, elegant solution.</p>
+            <p>I think in product, work at the intersection of user, business, and technology – and help teams build a shared solution they all believe in.</p>
           </div>
         </div>
 
@@ -784,9 +786,9 @@
 
       <!-- ── Project 1 ── -->
       <div class="project-row">
-        <div class="img-col">
-          <div class="img-wrap-default">
-            <img src="https://portfolioum.lovable.app/assets/polyas-voting-new-B-9FXgNT.png"
+        <div class="img-col" style="padding:0;">
+          <div class="img-wrap-phone" style="width:100%;height:100%;min-height:340px;">
+            <img src="configurator-preview.png"
                  alt="New Entry Experience – POLYAS Configurator">
           </div>
         </div>
@@ -854,8 +856,8 @@
               <span class="t-en">Project Results</span>
             </p>
             <div class="result-box">
-              <span class="t-de">Pilotkunden-Tests · 93% Akzeptanzrate</span>
-              <span class="t-en">Pilot customer testing · 93% acceptance rate</span>
+              <span class="t-de">Pilotkunden-Tests · SUS Score 87</span>
+              <span class="t-en">Pilot customer testing · SUS Score 87</span>
             </div>
           </div>
           <div>
@@ -871,8 +873,10 @@
       <div class="project-row">
         <div class="img-col img-col-feedback">
           <div class="img-wrap-feedback">
-            <img src="https://portfolioum.lovable.app/assets/feedback-kanban-framed-DdpPBhUO.png"
-                 alt="Establishing a New Feedback Process">
+            <img src="feedback-hero.png" id="feedback-img-de"
+                 alt="Feedback-Prozess – Chaos zu Klarheit">
+            <img src="feedback-hero-en.png" id="feedback-img-en"
+                 alt="Feedback Process – Chaos to Clarity" style="display:none;">
           </div>
         </div>
         <div class="text-col">
@@ -882,8 +886,8 @@
             <span class="t-en">Establishing a New<br>Feedback Process</span>
           </h3>
           <p class="project-desc">
-            <span class="t-de">Strukturierter Feedback-Kanal für produktorientierte Entwicklung bei POLYAS. Systematische Sammlung und Priorisierung von User-Feedback durch RICE-Bewertung und optimierte Jira-Workflows.</span>
-            <span class="t-en">Structured feedback channel for product-oriented development at POLYAS. Systematic collection and prioritization of user feedback through RICE scoring and optimized Jira workflows.</span>
+            <span class="t-de">Ja, es könnte ein weiteres schönes UI-Projekt sein – aber ich bin stolz darauf, dass ich bei POLYAS nicht nur Design geliefert habe, sondern auch organisatorische Veränderungen anstoßen und Prozesse nachhaltig verbessern konnte.</span>
+            <span class="t-en">Yes, this could have been another nice UI project – but I'm proud that at POLYAS I didn't just deliver design, but was also able to drive organizational change and improve processes in a lasting way.</span>
           </p>
           <div class="tags">
             <span class="badge t-de">Workshop-Moderation</span>
@@ -1026,9 +1030,22 @@
             <span class="t-de">Der POLYAS Configurator war der zentrale Einstiegspunkt für B2B-Kunden zur Einrichtung ihrer Online-Wahlen. Die bestehende Login- und Onboarding-Experience führte zu hoher Absprungrate und einem hohen Volumen an Support-Anfragen zum Einstieg ins Produkt – Nutzer:innen fanden sich nicht zurecht.</span>
             <span class="t-en">The POLYAS Configurator was the central entry point for B2B customers to set up their online elections. The existing login and onboarding experience led to a high bounce rate and a large volume of support requests – users were struggling to find their way.</span>
           </p>
-          <div class="modal-placeholder">
-            <span class="t-de">Bild: Screenshot Ausgangszustand / Before</span>
-            <span class="t-en">Image: Screenshot of original state / Before</span>
+          <!-- MacBook Mockup -->
+          <div style="margin:2rem 0; display:flex; justify-content:center;">
+            <div style="position:relative; width:100%; max-width:680px;">
+              <!-- Screen bezel -->
+              <div style="background:#1a1a1a; border-radius:12px 12px 0 0; padding:18px 18px 0; box-shadow:0 0 0 1px #333;">
+                <!-- Camera dot -->
+                <div style="width:6px;height:6px;border-radius:50%;background:#444;margin:0 auto 10px;"></div>
+                <!-- Screen -->
+                <div style="background:#000; border-radius:4px 4px 0 0; overflow:hidden; line-height:0;">
+                  <img src="before-configurator.png" alt="POLYAS Configurator – Ausgangszustand" style="width:100%;height:auto;display:block;filter:brightness(0.95);">
+                </div>
+              </div>
+              <!-- Base -->
+              <div style="background:#2a2a2a; height:14px; border-radius:0 0 4px 4px; box-shadow:0 0 0 1px #333;"></div>
+              <div style="background:#222; height:6px; border-radius:0 0 8px 8px; margin:0 8%; box-shadow:0 2px 8px rgba(0,0,0,0.5);"></div>
+            </div>
           </div>
         </div>
 
@@ -1093,9 +1110,14 @@
               </div>
             </div>
           </div>
-          <div class="modal-placeholder">
-            <span class="t-de">Bild: Figma-Screens / Wireframes / Prototyp</span>
-            <span class="t-en">Image: Figma screens / wireframes / prototype</span>
+          <!-- Result Images -->
+          <div style="margin:2rem 0; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); border-radius:12px; padding:3rem 2rem; display:flex; justify-content:center; align-items:flex-end; gap:2rem; flex-wrap:wrap;">
+            <div style="flex:1; min-width:240px; max-width:460px;">
+              <img src="configurator-after-macbook2.png" alt="POLYAS Configurator – Neue Startseite Bestandsuser" style="width:100%;height:auto;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));">
+            </div>
+            <div style="flex:1; min-width:240px; max-width:460px;">
+              <img src="configurator-after-macbook.png" alt="POLYAS Configurator – Neue Startseite Neuuser" style="width:100%;height:auto;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.4));">
+            </div>
           </div>
         </div>
 
@@ -1162,8 +1184,8 @@
             <span class="t-de">Die zentralen Probleme: Unübersichtlichkeit, langes Scrollen und häufig unabsichtlich ungültige Stimmen. Das Tabellendesign der Stimmzettel war auf mobilen Geräten nur bedingt responsiv – was zu Frustration bei Kunden und Wahlberechtigten führte und sogar zum Verlust von Aufträgen beitrug. Auch barrierefrei war der alte Client nicht vollständig: Eine Stimmabgabe mit Screenreader war grundsätzlich möglich, jedoch führte das Tabellendesign gerade bei komplexen Wahlen zu erheblicher Frustration bei Screenreader-Nutzer:innen.</span>
             <span class="t-en">The core problems: poor clarity, excessive scrolling and frequent unintentional invalid votes. The table-based ballot design was only partially responsive on mobile devices – leading to frustration among customers and voters alike, and even contributing to lost contracts. Accessibility was also lacking: while casting a vote with a screen reader was technically possible, the table-based design caused significant frustration for screen reader users, especially in complex elections.</span>
           </p>
-          <div class="modal-img">
-            <img src="https://portfolioum.lovable.app/assets/project-2-phone-mockup-BHM0p6SZ.png" alt="POLYAS New Voting Client Mockup">
+          <div style="margin:2rem 0;">
+            <img src="voting-before-4phones.png" alt="Alter POLYAS Voting Client – Ausgangszustand" style="width:100%; height:auto; display:block; border-radius:8px;">
           </div>
         </div>
 
@@ -1229,9 +1251,10 @@
               </div>
             </div>
           </div>
-          <div class="modal-placeholder">
-            <span class="t-de">Bild: Design System / UI Komponenten</span>
-            <span class="t-en">Image: Design system / UI components</span>
+
+          <!-- Voting Shot -->
+          <div style="margin:2.5rem 0;">
+            <img src="voting-shot.png" alt="POLYAS New Voting Client – Screens" style="width:100%;height:auto;display:block;border-radius:8px;">
           </div>
         </div>
 
@@ -1282,7 +1305,8 @@
           <span class="badge t-en">Workshop Facilitation</span>
           <span class="badge t-de">Prozessdesign</span>
           <span class="badge t-en">Process Design</span>
-          <span class="badge">RICE</span>
+          <span class="badge t-de">RICE-Priorisierung</span>
+          <span class="badge t-en">RICE Prioritization</span>
           <span class="badge">Jira</span>
           <span class="badge">Stakeholder Management</span>
         </div>
@@ -1300,11 +1324,12 @@
             <span class="t-en">Starting Point</span>
           </h3>
           <p class="modal-text">
-            <span class="t-de">Bei POLYAS fehlte ein strukturierter Prozess zur Sammlung und Priorisierung von Nutzerfeedback. Feedback kam über verschiedene Kanäle (Support, Sales, CS) ungefiltert ins Team – ohne klare Priorisierung oder Transparenz für die Stakeholder.</span>
-            <span class="t-en">At POLYAS, there was no structured process for collecting and prioritizing user feedback. Feedback came into the team unfiltered through various channels (support, sales, CS) – without clear prioritization or transparency for stakeholders.</span>
+            <span class="t-de">Bei POLYAS fehlte ein strukturierter Prozess zur Sammlung und Priorisierung von Feedback. Dabei floss Feedback aus drei Quellen ein: Bestandskunden geben ihr Feedback über ihre zuständigen Manager weiter, SaaS-Kunden können direkt im Produkt über Umfragen Feedback abgeben – und intern bringen Teams wie Sales, Customer Success und Support täglich Rückmeldungen aus dem Kundenkontakt mit. All das kam ungefiltert und über verschiedene Kanäle ins Produktteam: ohne klare Priorisierung, ohne Transparenz für Stakeholder und ohne gemeinsame Sprache für Entscheidungen.</span>
+            <span class="t-en">At POLYAS, there was no structured process for collecting and prioritizing feedback. Feedback came from three sources: existing customers pass their feedback through their dedicated account managers, SaaS customers can submit feedback directly in the product via surveys – and internally, teams like Sales, Customer Success and Support bring daily insights from customer interactions. All of it reached the product team unfiltered, through various channels: without clear prioritization, without transparency for stakeholders, and without a shared language for decision-making.</span>
           </p>
-          <div class="modal-img">
-            <img src="https://portfolioum.lovable.app/assets/feedback-kanban-framed-DdpPBhUO.png" alt="Feedback Kanban Board">
+          <div style="margin:1.5rem 0; border-radius:8px; overflow:hidden; line-height:0; border-left:3px solid var(--pink);">
+            <img src="feedback-before.png" alt="Ausgangssituation – unstrukturierter Feedback-Prozess" class="b-de" style="width:100%;height:auto;">
+            <img src="feedback-before-en.png" alt="Starting Point – unstructured feedback process" class="b-en" style="width:100%;height:auto;">
           </div>
         </div>
 
@@ -1321,7 +1346,7 @@
             </div>
             <div class="modal-card">
               <h4><span class="t-de">Beteiligte Teams</span><span class="t-en">Teams Involved</span></h4>
-              <p><span class="t-de">Product Management, Customer Success, Sales, Support und Entwicklungsteam.</span><span class="t-en">Product Management, Customer Success, Sales, Support and Development team.</span></p>
+              <p><span class="t-de">Leadership, Product Management, Customer Success, Sales, Support, Entwicklungsteam und Bestandskunden.</span><span class="t-en">Leadership, Product Management, Customer Success, Sales, Support, Development team and existing customers.</span></p>
             </div>
           </div>
         </div>
@@ -1337,34 +1362,33 @@
               <div class="step-num">1</div>
               <div class="step-content">
                 <h4><span class="t-de">Ist-Analyse &amp; Stakeholder-Interviews</span><span class="t-en">Current State Analysis &amp; Stakeholder Interviews</span></h4>
-                <p><span class="t-de">Interviews mit allen beteiligten Teams zur Erfassung des Ist-Zustands, bestehender Pain Points und Anforderungen.</span><span class="t-en">Interviews with all involved teams to capture current state, existing pain points and requirements.</span></p>
+                <p><span class="t-de">Zu Beginn habe ich Einzelgespräche mit allen beteiligten Teams geführt – Customer Success, Sales, Support, Product Management und Leadership. Ziel war es, zu verstehen, wie Feedback aktuell aufgenommen wird, wo es verloren geht und was sich die Teams von einem neuen Prozess erhoffen. Die Ergebnisse zeigten ein klares Bild: Feedback kam über E-Mail, Slack, mündliche Weitergabe und sporadische Jira-Tickets – ohne gemeinsame Struktur oder Priorisierungslogik.</span><span class="t-en">I started by conducting one-on-one conversations with all involved teams – Customer Success, Sales, Support, Product Management and Leadership. The goal was to understand how feedback was currently being captured, where it was getting lost, and what each team hoped a new process would achieve. The findings painted a clear picture: feedback was coming in via email, Slack, verbal handovers and sporadic Jira tickets – with no shared structure or prioritization logic.</span></p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">2</div>
               <div class="step-content">
                 <h4><span class="t-de">Workshop-Serie</span><span class="t-en">Workshop Series</span></h4>
-                <p><span class="t-de">Moderierte Workshops zur gemeinsamen Definition des neuen Prozesses, Klärung von Rollen &amp; Verantwortlichkeiten und Alignment aller Stakeholder.</span><span class="t-en">Facilitated workshops to jointly define the new process, clarify roles &amp; responsibilities and align all stakeholders.</span></p>
+                <p><span class="t-de">Auf Basis der Interview-Erkenntnisse habe ich eine Workshop-Serie moderiert, an der Vertreter:innen aller Teams teilnahmen. In den Workshops haben wir gemeinsam den neuen Prozess definiert: Wer gibt Feedback weiter? Über welchen Kanal? Wer ist verantwortlich für die Sichtung? Welche Kriterien entscheiden über Priorität? Durch die gemeinsame Erarbeitung entstand nicht nur ein funktionierender Prozess – sondern auch echtes Ownership und Akzeptanz bei allen Beteiligten.</span><span class="t-en">Building on the interview insights, I facilitated a workshop series with representatives from all teams. Together, we defined the new process: Who passes on feedback? Through which channel? Who is responsible for reviewing it? What criteria determine priority? By developing it collaboratively, we didn't just create a working process – we also built genuine ownership and buy-in from everyone involved.</span></p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">3</div>
               <div class="step-content">
                 <h4><span class="t-de">RICE-Priorisierung</span><span class="t-en">RICE Prioritization</span></h4>
-                <p><span class="t-de">Einführung des RICE-Scoring-Frameworks (Reach, Impact, Confidence, Effort) zur objektiven Priorisierung von Feedback-Items.</span><span class="t-en">Introduction of the RICE scoring framework (Reach, Impact, Confidence, Effort) for objective prioritization of feedback items.</span></p>
+                <p><span class="t-de">Ein zentrales Problem war fehlende Objektivität bei der Bewertung von Feedback: Lautes Feedback wurde oft höher priorisiert als wichtiges. Als gemeinsame Sprache für Priorisierungsentscheidungen haben wir das RICE-Framework eingeführt – Reach (wie viele Nutzer:innen sind betroffen?), Impact (welchen Einfluss hat die Lösung?), Confidence (wie sicher sind wir uns?) und Effort (wie viel Aufwand ist nötig?). Das Framework wurde in einem internen Workshop mit dem gesamten Produktteam eingeführt und auf bestehende Feedback-Items angewendet.</span><span class="t-en">A core problem was the lack of objectivity in evaluating feedback: loud feedback was often prioritized over important feedback. To create a shared language for prioritization decisions, we introduced the RICE framework – Reach (how many users are affected?), Impact (what effect does the solution have?), Confidence (how certain are we?) and Effort (how much work is required?). The framework was introduced in an internal workshop with the entire product team and applied to existing feedback items.</span></p>
               </div>
             </div>
             <div class="process-step">
               <div class="step-num">4</div>
               <div class="step-content">
                 <h4>Jira Board Setup</h4>
-                <p><span class="t-de">Aufbau eines zentralen Jira-Boards als Single Source of Truth für gesammeltes Feedback – mit Workflows, Labels und automatisierten Statusübergängen.</span><span class="t-en">Setup of a central Jira board as single source of truth for collected feedback – with workflows, labels and automated status transitions.</span></p>
+                <p><span class="t-de">Als technische Grundlage des neuen Prozesses habe ich ein dediziertes Jira-Board aufgebaut – als Single Source of Truth für sämtliches gesammeltes Feedback. Das Board umfasst klar definierte Workflows (Neu → Sichtung → Bewertung → Entschieden), ein einheitliches Label-System zur Kategorisierung nach Produkt, Thema und Quelle sowie automatisierte Statusübergänge. Alle Teams wurden im Umgang mit dem Board geschult, und es wurde ein fester Review-Rhythmus etabliert, in dem Feedback regelmäßig gesichtet und priorisiert wird.</span><span class="t-en">As the technical foundation of the new process, I set up a dedicated Jira board – as the single source of truth for all collected feedback. The board includes clearly defined workflows (New → Review → Evaluation → Decision), a consistent label system for categorization by product, topic and source, as well as automated status transitions. All teams were trained on how to use the board, and a regular review cadence was established to ensure feedback is consistently reviewed and prioritized.</span></p>
               </div>
             </div>
           </div>
-          <div class="modal-placeholder">
-            <span class="t-de">Bild: Workshop-Ergebnis / Jira-Board Setup</span>
-            <span class="t-en">Image: Workshop outcome / Jira board setup</span>
+          <div style="margin:2rem 0; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); border-radius:12px; padding:2.5rem 2rem; display:flex; justify-content:center;">
+            <img src="feedback-after-macbook.png" alt="POLYAS Feedback Kanban Board" style="width:100%;max-width:640px;height:auto;display:block;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));">
           </div>
         </div>
 
@@ -1398,8 +1422,8 @@
   <!-- ═══════════════════ FOOTER ═══════════════════ -->
   <footer>
     <p class="line1">
-      <span class="t-de">© 2025 Margarita Udovychenko. Alle Rechte vorbehalten.</span>
-      <span class="t-en">© 2025 Margarita Udovychenko. All rights reserved.</span>
+      <span class="t-de">© 2026 Margarita Udovychenko. Alle Rechte vorbehalten.</span>
+      <span class="t-en">© 2026 Margarita Udovychenko. All rights reserved.</span>
     </p>
     <p class="line2">
       <span class="t-de">Erstellt mit Leidenschaft für nutzerzentriertes Design</span>
@@ -1424,6 +1448,13 @@
         const isActive = (id.includes('de') && lang === 'de') || (id.includes('en') && lang === 'en');
         btn.classList.toggle('active', isActive);
       });
+      // Swap feedback hero images
+      const imgDe = document.getElementById('feedback-img-de');
+      const imgEn = document.getElementById('feedback-img-en');
+      if (imgDe && imgEn) {
+        imgDe.style.display = lang === 'de' ? 'block' : 'none';
+        imgEn.style.display = lang === 'en' ? 'block' : 'none';
+      }
     }
 
     // ── Navbar scroll ──
