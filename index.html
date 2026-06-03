@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Margarita Udovychenko – Portfolio</title>
+  <meta name="description" content="Portfolio von Margarita Udovychenko, Product Designerin. Portfolio of Margarita Udovychenko, Product Designer.">
+  <meta name="author" content="Margarita Udovychenko">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --pink:      #E8185D;
+      --pink-dark: #C4134F;
+      --pink-10:   rgba(232,24,93,0.10);
+      --pink-20:   rgba(232,24,93,0.20);
+      --black:     #111111;
+      --off-white: #EDEAE5;
+      --warm-gray: #D6D2CC;
+      --mid-gray:  #888480;
+      --card-bg:   #F5F2EE;
+      --shadow:    0 2px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 6px 40px rgba(0,0,0,0.13);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--black);
+      background: var(--off-white);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── Language switching ── */
+    .t-en, .b-en { display: none; }
+    html.lang-en .t-de { display: none; }
+    html.lang-en .b-de { display: none; }
+    html.lang-en .t-en { display: inline; }
+    html.lang-en .b-en { display: block; }
+    html.lang-en span.badge.t-en { display: inline-flex; }
+    span.badge.t-de { display: inline-flex; }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(237,234,229,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--warm-gray);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: var(--black); text-decoration: none;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem;
+    }
+    .nav-links a {
+      color: var(--black); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--pink); }
+    .lang-switcher {
+      display: flex; gap: 2px;
+      background: var(--warm-gray);
+      padding: 3px; border-radius: 4px;
+    }
+    .lang-btn {
+      padding: 3px 10px; border-radius: 2px;
+      font-size: 0.72rem; font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer; border: none;
+      background: transparent; color: var(--mid-gray);
+      letter-spacing: 0.08em;
+      transition: all 0.2s;
+    }
+    .lang-btn.active { background: var(--pink); color: #fff; }
+    .lang-btn:not(.active):hover { color: var(--pink); }
+    .hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 4px; color: var(--black);
+    }
+    .mobile-menu {
+      display: none; position: absolute;
+      top: 60px; left: 0; right: 0;
+      background: var(--off-white);
+      border-top: 2px solid var(--pink);
+      padding: 0.5rem 1rem 1rem;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; padding: 0.75rem 0.5rem;
+      color: var(--black); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-bottom: 1px solid var(--warm-gray);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--pink); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    /* large decorative circle */
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: clamp(340px, 55vw, 700px);
+      height: clamp(340px, 55vw, 700px);
+      border-radius: 50%;
+      background: var(--pink);
+      bottom: -12%; right: -8%;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 10;
+      padding: 6rem 2rem 4rem;
+      max-width: 1100px; margin: 0 auto;
+      width: 100%;
+    }
+    .hero-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: 1.25rem;
+    }
+    .hero-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(3.5rem, 11vw, 9.5rem);
+      font-weight: 900;
+      color: var(--off-white);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--pink);
+    }
+    .hero-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1rem, 2.4vw, 1.45rem);
+      font-weight: 700;
+      color: var(--warm-gray);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .hero-body {
+      font-size: clamp(0.9rem, 1.4vw, 1rem);
+      color: rgba(237,234,229,0.65);
+      max-width: 32rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .scroll-indicator {
+      display: inline-block;
+      margin-top: 1rem; animation: bounce 2s infinite;
+      opacity: 0.45; cursor: pointer;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: inline-flex; align-items: center;
+      justify-content: center; gap: 0.5rem;
+      background: var(--pink); color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.85rem 2.25rem;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover {
+      background: var(--pink-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ── Layout ── */
+    section { padding: 5.5rem 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .container-sm { max-width: 60rem; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── Section label / title ── */
+    .section-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 0.6rem;
+      text-align: center;
+    }
+    .about-bg .section-eyebrow {
+      margin-top: -1.5rem;
+      margin-bottom: 1.75rem;
+      text-align: left;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 0.95;
+      color: var(--black);
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .section-subtitle {
+      font-size: 0.95rem; text-align: center;
+      color: var(--mid-gray); margin-bottom: 3.5rem;
+      max-width: 36rem; margin-left: auto; margin-right: auto;
+      line-height: 1.75;
+    }
+
+    /* ── About ── */
+    .about-bg { background: var(--off-white); }
+    .about-grid {
+      display: grid; gap: 3.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 768px) {
+      .about-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .about-text p + p { margin-top: 1.25rem; }
+    .about-text p { font-size: 0.97rem; line-height: 1.85; color: #333; }
+    .expertise-box {
+      background: var(--black);
+      color: var(--off-white);
+      padding: 2.25rem;
+      position: relative; overflow: hidden;
+    }
+    .expertise-box::after {
+      content: '';
+      position: absolute;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--pink);
+      bottom: -60px; right: -60px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .expertise-box h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem; font-weight: 900;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--off-white);
+      margin-bottom: 1.75rem;
+    }
+    .expertise-box h4 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; color: var(--pink);
+      margin-bottom: 0.35rem; font-size: 0.72rem;
+      letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    .expertise-box p,
+    .expertise-box .method-row {
+      font-size: 0.85rem; color: var(--warm-gray); line-height: 1.6;
+    }
+    .expertise-block + .expertise-block {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .method-row + .method-row { margin-top: 0.35rem; }
+
+    /* ── Projects ── */
+    .projects-bg { background: #1A1A1A; }
+    .projects-bg .section-eyebrow { color: var(--pink); }
+    .projects-bg .section-title { color: var(--off-white); }
+    .projects-bg .section-subtitle { color: var(--mid-gray); }
+    .project-list { display: grid; gap: 0; }
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .project-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    @media (min-width: 900px) {
+      .project-row { grid-template-columns: 1fr 1fr; }
+      .project-row.reverse .img-col { order: 2; }
+      .project-row.reverse .text-col { order: 1; }
+    }
+    .img-col {
+      display: flex; align-items: center; justify-content: center;
+      padding: 3rem 2rem; min-height: 300px;
+      background: #222;
+    }
+    .img-wrap-default {
+      background: #2A2A2A;
+      padding: 2rem;
+      width: 100%; display: flex; align-items: center; justify-content: center;
+    }
+    .img-wrap-default img {
+      width: 100%; height: auto; max-height: 300px;
+      object-fit: contain; transition: transform 0.35s ease;
+      filter: brightness(0.95);
+    }
+    .img-wrap-default:hover img { transform: scale(1.04); }
+    .img-wrap-phone {
+      position: relative;
+      overflow: hidden; width: 100%; min-height: 300px;
+    }
+    .img-wrap-phone img {
+      width: 100%; height: 100%; object-fit: cover;
+      min-height: 300px; transition: transform 0.35s ease;
+    }
+    .img-wrap-phone:hover img { transform: scale(1.04); }
+    .img-wrap-feedback {
+      width: 100%; position: relative;
+      border-left: 4px solid var(--pink);
+    }
+    .img-wrap-feedback img {
+      width: 100%; height: auto; min-height: 260px;
+      object-fit: cover; display: block;
+      transition: transform 0.35s ease;
+    }
+    .img-wrap-feedback:hover img { transform: scale(1.03); }
+    .img-col-feedback { background: #1E1E1E; }
+    .text-col {
+      padding: 3rem 2.5rem;
+      display: flex; flex-direction: column;
+      justify-content: center; gap: 1.5rem;
+      background: #1A1A1A;
+    }
+    .project-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--pink);
+    }
+    .project-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--off-white);
+      letter-spacing: 0.01em;
+    }
+    .project-desc {
+      font-size: 0.92rem; line-height: 1.75;
+      color: var(--mid-gray);
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .badge {
+      display: inline-flex; align-items: center;
+      padding: 0.2rem 0.65rem;
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: transparent; color: var(--warm-gray);
+      border: 1px solid rgba(255,255,255,0.15);
+      white-space: nowrap;
+    }
+    .results-label {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; color: var(--pink);
+      font-size: 0.7rem; letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .result-box {
+      border-left: 3px solid var(--pink);
+      padding-left: 0.85rem;
+      color: var(--off-white);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    /* ── Contact ── */
+    .contact-bg { background: var(--off-white); }
+    .contact-card {
+      max-width: 30rem; margin: 0 auto;
+    }
+    .contact-inner {
+      background: var(--black);
+      padding: 2.75rem;
+      position: relative; overflow: hidden;
+    }
+    .contact-inner::before {
+      content: '';
+      position: absolute;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: var(--pink);
+      top: -80px; right: -80px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+    .contact-inner h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem; font-weight: 900;
+      text-transform: uppercase;
+      color: var(--off-white);
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+    .contact-rows { display: grid; gap: 1.5rem; position: relative; z-index: 1; }
+    .contact-row { display: flex; align-items: center; gap: 1rem; }
+    .contact-icon {
+      padding: 0.65rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-label {
+      font-size: 0.68rem; color: var(--mid-gray);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+    .contact-value {
+      color: var(--off-white); font-weight: 400;
+      text-decoration: none; font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+    .contact-value:hover { color: var(--pink); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--black);
+      border-top: 2px solid var(--pink);
+      color: rgba(237,234,229,0.5);
+      padding: 2rem 2rem; text-align: center;
+    }
+    footer p + p { margin-top: 0.35rem; }
+    footer .line1 { font-size: 0.82rem; }
+    footer .line2 { font-size: 0.72rem; opacity: 0.7; }
+
+    /* ── Modal Overlay ── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      overflow-y: auto;
+    }
+    .modal-overlay.open { display: block; }
+    .modal-sheet {
+      background: #111;
+      min-height: 100vh;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 0 5rem;
+      position: relative;
+    }
+    .modal-close {
+      position: fixed; top: 1.25rem; right: 1.5rem; z-index: 600;
+      background: var(--pink); color: #fff;
+      border: none; cursor: pointer;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 700;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: var(--pink-dark); }
+    .modal-hero {
+      width: 100%; background: #1A1A1A;
+      padding: 5rem 2.5rem 3rem;
+      border-bottom: 2px solid var(--pink);
+      position: relative;
+    }
+    .modal-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--pink); margin-bottom: 0.75rem;
+    }
+    .modal-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 900; text-transform: uppercase;
+      color: var(--off-white); line-height: 0.95;
+      letter-spacing: -0.01em; margin-bottom: 1.5rem;
+    }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2rem; }
+    .modal-body { padding: 3rem 2.5rem; }
+    .modal-section { margin-bottom: 3rem; }
+    .modal-section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--pink); margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .modal-section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem; font-weight: 800;
+      text-transform: uppercase; color: var(--off-white);
+      margin-bottom: 0.75rem; letter-spacing: 0.02em;
+    }
+    .modal-text {
+      font-size: 0.95rem; line-height: 1.85;
+      color: rgba(237,234,229,0.7);
+    }
+    .modal-text + .modal-text { margin-top: 1rem; }
+    .modal-img {
+      width: 100%; display: block; margin: 1.5rem 0;
+      border-left: 3px solid var(--pink);
+    }
+    .modal-img img {
+      width: 100%; height: auto; display: block;
+      filter: brightness(0.9);
+    }
+    .modal-grid-2 {
+      display: grid; gap: 1.25rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 600px) {
+      .modal-grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+    .modal-card {
+      background: #1A1A1A;
+      padding: 1.5rem;
+      border-top: 2px solid var(--pink);
+    }
+    .modal-card h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      text-transform: uppercase; color: var(--off-white);
+      margin-bottom: 0.5rem; letter-spacing: 0.05em;
+    }
+    .modal-card p {
+      font-size: 0.88rem; color: var(--mid-gray); line-height: 1.65;
+    }
+    .process-steps { display: grid; gap: 0; }
+    .process-step {
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .process-step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--pink); line-height: 1;
+      min-width: 2rem; text-align: center;
+      opacity: 0.6;
+    }
+    .step-content h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      text-transform: uppercase; color: var(--off-white);
+      margin-bottom: 0.3rem; letter-spacing: 0.05em;
+    }
+    .step-content p {
+      font-size: 0.88rem; color: var(--mid-gray); line-height: 1.65;
+    }
+    .result-stat {
+      display: flex; align-items: baseline; gap: 0.75rem;
+      padding: 1.25rem;
+      background: #1A1A1A;
+      border-left: 3px solid var(--pink);
+      margin-bottom: 0.75rem;
+    }
+    .result-stat .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.5rem; font-weight: 900;
+      color: var(--pink); line-height: 1;
+      white-space: nowrap;
+    }
+    .result-stat .stat-label {
+      font-size: 0.88rem; color: var(--off-white); line-height: 1.5;
+    }
+    .modal-placeholder {
+      background: #1E1E1E;
+      border: 1px dashed rgba(255,255,255,0.12);
+      padding: 2rem; text-align: center;
+      color: var(--mid-gray); font-size: 0.82rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin: 1.5rem 0;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 767px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .nav-mobile-right {
+        display: flex; align-items: center; gap: 0.75rem;
+      }
+    }
+    @media (min-width: 768px) {
+      .nav-mobile-right { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">MU</a>
+
+      <!-- Desktop links + lang -->
+      <div class="nav-links">
+        <a href="#about" class="t-de">Über mich</a>
+        <a href="#about" class="t-en">About</a>
+        <a href="#projects" class="t-de">Projekte</a>
+        <a href="#projects" class="t-en">Projects</a>
+        <a href="#contact" class="t-de">Kontakt</a>
+        <a href="#contact" class="t-en">Contact</a>
+        <div class="lang-switcher">
+          <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
+
+      <!-- Mobile: lang + hamburger -->
+      <div class="nav-mobile-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" id="btn-de-m" onclick="setLang('de')">DE</button>
+          <button class="lang-btn" id="btn-en-m" onclick="setLang('en')">EN</button>
+        </div>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="#about" onclick="closeMenu()" class="t-de">Über mich</a>
+      <a href="#about" onclick="closeMenu()" class="t-en">About</a>
+      <a href="#projects" onclick="closeMenu()" class="t-de">Projekte</a>
+      <a href="#projects" onclick="closeMenu()" class="t-en">Projects</a>
+      <a href="#contact" onclick="closeMenu()" class="t-de">Kontakt</a>
+      <a href="#contact" onclick="closeMenu()" class="t-en">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">
+        <span class="t-de">Product Designerin · UX/UI Designerin</span>
+        <span class="t-en">Product Designer · UX/UI Designer</span>
+      </p>
+      <h1 class="hero-name">Margarita<br><em>Udovy&shy;chenko</em></h1>
+      <p class="hero-subtitle">
+        <span class="t-de">Teamplayerin · Product Thinker · Problem Solver</span>
+        <span class="t-en">Teamplayer · Product Thinker · Problem Solver</span>
+      </p>
+      <p class="hero-body">
+        <span class="t-de">Research-getrieben. Strategisch denkend. Business-orientiert. Mit dem Anspruch, Dinge zu schaffen, die wirklich funktionieren, echten Mehrwert bieten – und dabei auch schön sind.</span>
+        <span class="t-en">Research-driven. Strategy-minded. Business-oriented. With the ambition to make things that truly work, deliver real value — and look great doing it.</span>
+      </p>
+      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+        <a href="#projects" class="btn-primary">
+          <span class="t-de">Meine Arbeit</span>
+          <span class="t-en">My Work</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ABOUT ═══════════════════ -->
+  <section id="about" class="about-bg">
+    <div class="container-sm">
+      <p class="section-eyebrow">
+        <span class="t-de">Über mich</span>
+        <span class="t-en">About me</span>
+      </p>
+      <div class="about-grid" style="align-items:start;">
+
+        <!-- Left: Heading + Text -->
+        <div class="about-text">
+          <h2 class="section-title" style="text-align:left; margin-bottom:2rem;">
+            <span class="t-de">Hallo!<br>Ich bin Rita.</span>
+            <span class="t-en">Hi!<br>I'm Rita.</span>
+          </h2>
+          <!-- DE -->
+          <div class="b-de">
+            <p>UX/UI Designerin mit 4+ Jahren Erfahrung und einem Hintergrund im Projektmanagement, der mich früh gelehrt hat: gutes Design endet nicht beim Pixel.</p>
+            <p>Bei POLYAS habe ich UX/UI für sechs B2B- und SaaS-Produkte verantwortet – von der ersten Nutzerrecherche bis zur fertigen Umsetzung und Erfolgsmessung. Was mich antreibt: der Moment, wenn ein komplexes Problem plötzlich eine klare, elegante Lösung bekommt.</p>
+            <p>Ich denke in Systemen, arbeite gerne an der Schnittstelle von Nutzer, Business und Technologie – und bringe Teams dazu, gemeinsam eine Lösung zu entwickeln, der alle vertrauen.</p>
+          </div>
+          <!-- EN -->
+          <div class="b-en">
+            <p>UX/UI Designer with 4+ years of experience and a background in project management that taught me early on: good design doesn't stop at the pixel.</p>
+            <p>At POLYAS, I owned UX/UI across six B2B and SaaS products – from initial user research to finished implementation and measurement. What drives me: that moment when a complex problem suddenly finds a clear, elegant solution.</p>
+            <p>I think in systems, thrive at the intersection of user, business, and technology – and help teams build a shared solution they all believe in.</p>
+          </div>
+        </div>
+
+        <!-- Right: Expertise Box -->
+        <div class="expertise-box">
+          <h3>Expertise &amp; Tools</h3>
+          <div class="expertise-block">
+            <h4>
+              <span class="t-de">Design &amp; Prototyping</span>
+              <span class="t-en">Design &amp; Prototyping</span>
+            </h4>
+            <p>Figma · Adobe InDesign · Miro · Adobe After Effects</p>
+          </div>
+          <div class="expertise-block">
+            <h4>
+              <span class="t-de">UX Research &amp; Testing</span>
+              <span class="t-en">UX Research &amp; Testing</span>
+            </h4>
+            <p>
+              <span class="t-de">User Research · Usability Testing · Heuristische Evaluation · User Journey Mapping · Informationsarchitektur · Accessibility (WCAG 2.0)</span>
+              <span class="t-en">User Research · Usability Testing · Heuristic Evaluation · User Journey Mapping · Information Architecture · Accessibility (WCAG 2.0)</span>
+            </p>
+          </div>
+          <div class="expertise-block">
+            <h4>
+              <span class="t-de">Product &amp; Strategie</span>
+              <span class="t-en">Product &amp; Strategy</span>
+            </h4>
+            <p>
+              <span class="t-de">Design Thinking · RICE-Priorisierung · Stakeholder Management · OKR-aligned Design · Design Systems</span>
+              <span class="t-en">Design Thinking · RICE Prioritization · Stakeholder Management · OKR-aligned Design · Design Systems</span>
+            </p>
+          </div>
+          <div class="expertise-block">
+            <h4>
+              <span class="t-de">Kollaboration &amp; Prozess</span>
+              <span class="t-en">Collaboration &amp; Process</span>
+            </h4>
+            <p>
+              <span class="t-de">Agile (Scrum, Kanban) · Workshop-Moderation · Developer Handoff · Design Critique</span>
+              <span class="t-en">Agile (Scrum, Kanban) · Workshop Facilitation · Developer Handoff · Design Critique</span>
+            </p>
+          </div>
+          <div class="expertise-block">
+            <h4>
+              <span class="t-de">AI &amp; Neue Tools</span>
+              <span class="t-en">AI &amp; Emerging Tools</span>
+            </h4>
+            <p>Figma Make · Claude Code · Midjourney · Stitch · Notion AI · Cursor</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PROJECTS ═══════════════════ -->
+  <section id="projects" class="projects-bg">
+    <div class="container">
+      <p class="section-eyebrow">
+        <span class="t-de">Ausgewählte Projekte</span>
+        <span class="t-en">Selected Projects</span>
+      </p>
+      <h2 class="section-title">
+        <span class="t-de">Case Studies.</span>
+        <span class="t-en">Case Studies.</span>
+      </h2>
+      <p class="section-subtitle">
+        <span class="t-de">Meine Arbeit mit messbarem Impact. Auf Wunsch stelle ich gerne weitere Projekte im Detail vor.</span>
+        <span class="t-en">My work with measurable impact. Happy to present additional projects in detail upon request.</span>
+      </p>
+    </div>
+
+    <div class="project-list">
+
+      <!-- ── Project 1 ── -->
+      <div class="project-row">
+        <div class="img-col">
+          <div class="img-wrap-default">
+            <img src="https://portfolioum.lovable.app/assets/polyas-voting-new-B-9FXgNT.png"
+                 alt="New Entry Experience – POLYAS Configurator">
+          </div>
+        </div>
+        <div class="text-col">
+          <p class="project-number">01 / 03</p>
+          <h3 class="project-title">
+            <span class="t-de">Neue Einstiegsexperience<br>POLYAS Configurator</span>
+            <span class="t-en">New Entry Experience<br>POLYAS Configurator</span>
+          </h3>
+          <p class="project-desc">
+            <span class="t-de">Optimierte Einstiegserfahrung für den POLYAS Configurator. Intuitive Nutzerführung durch responsives Design und klare User-Flows für bessere Orientierung.</span>
+            <span class="t-en">Optimized onboarding experience for the POLYAS Configurator. Intuitive user guidance through responsive design and clear user flows for better orientation.</span>
+          </p>
+          <div class="tags">
+            <span class="badge">Responsive Design</span>
+            <span class="badge">User Research</span>
+            <span class="badge">User Journey</span>
+            <span class="badge">A/B Testing</span>
+          </div>
+          <div>
+            <p class="results-label">
+              <span class="t-de">Projektergebnisse</span>
+              <span class="t-en">Project Results</span>
+            </p>
+            <div class="result-box">
+              <span class="t-de">-10% Absprungsrate · -90% Support-Anfragen · Neue Login &amp; Onboarding-Experience</span>
+              <span class="t-en">-10% bounce rate · -90% support requests · New login &amp; onboarding experience</span>
+            </div>
+          </div>
+          <div>
+            <button onclick="openModal('modal-1')" class="btn-primary">
+              <span class="t-de">Case Study ansehen</span>
+              <span class="t-en">View Case Study</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 2 ── -->
+      <div class="project-row reverse">
+        <div class="img-col" style="padding:0;">
+          <div class="img-wrap-phone" style="width:100%;height:100%;min-height:340px;">
+            <img src="https://portfolioum.lovable.app/assets/project-2-phone-mockup-BHM0p6SZ.png"
+                 alt="POLYAS New Voting Client">
+          </div>
+        </div>
+        <div class="text-col">
+          <p class="project-number">02 / 03</p>
+          <h3 class="project-title">POLYAS<br>New Voting Client</h3>
+          <p class="project-desc">
+            <span class="t-de">Mobile-First Voting Interface mit WCAG 2.0 Barrierefreiheit. Komplette Neugestaltung für optimale Usability auf allen Geräten.</span>
+            <span class="t-en">Mobile-first voting interface with WCAG 2.0 accessibility. Complete redesign for optimal usability across all devices.</span>
+          </p>
+          <div class="tags">
+            <span class="badge">Mobile first</span>
+            <span class="badge t-de">Barrierefreiheit</span>
+            <span class="badge t-en">Accessibility</span>
+            <span class="badge">User Testing</span>
+            <span class="badge">UI Components</span>
+            <span class="badge">Design system</span>
+          </div>
+          <div>
+            <p class="results-label">
+              <span class="t-de">Projektergebnisse</span>
+              <span class="t-en">Project Results</span>
+            </p>
+            <div class="result-box">
+              <span class="t-de">Pilotkunden-Tests · 93% Akzeptanzrate</span>
+              <span class="t-en">Pilot customer testing · 93% acceptance rate</span>
+            </div>
+          </div>
+          <div>
+            <button onclick="openModal('modal-2')" class="btn-primary">
+              <span class="t-de">Case Study ansehen</span>
+              <span class="t-en">View Case Study</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 3 ── -->
+      <div class="project-row">
+        <div class="img-col img-col-feedback">
+          <div class="img-wrap-feedback">
+            <img src="https://portfolioum.lovable.app/assets/feedback-kanban-framed-DdpPBhUO.png"
+                 alt="Establishing a New Feedback Process">
+          </div>
+        </div>
+        <div class="text-col">
+          <p class="project-number">03 / 03</p>
+          <h3 class="project-title">
+            <span class="t-de">Etablierung eines neuen<br>Feedback-Prozesses</span>
+            <span class="t-en">Establishing a New<br>Feedback Process</span>
+          </h3>
+          <p class="project-desc">
+            <span class="t-de">Strukturierter Feedback-Kanal für produktorientierte Entwicklung bei POLYAS. Systematische Sammlung und Priorisierung von User-Feedback durch RICE-Bewertung und optimierte Jira-Workflows.</span>
+            <span class="t-en">Structured feedback channel for product-oriented development at POLYAS. Systematic collection and prioritization of user feedback through RICE scoring and optimized Jira workflows.</span>
+          </p>
+          <div class="tags">
+            <span class="badge t-de">Workshop-Moderation</span>
+            <span class="badge t-en">Workshop Facilitation</span>
+            <span class="badge t-de">Prozessdesign</span>
+            <span class="badge t-en">Process Design</span>
+            <span class="badge t-de">RICE-Priorisierung</span>
+            <span class="badge t-en">RICE Prioritization</span>
+            <span class="badge t-de">Jira-Board Setup</span>
+            <span class="badge t-en">Jira Board Setup</span>
+            <span class="badge">Stakeholder Management</span>
+          </div>
+          <div>
+            <p class="results-label">
+              <span class="t-de">Projektergebnisse</span>
+              <span class="t-en">Project Results</span>
+            </p>
+            <div class="result-box">
+              <span class="t-de">Zentrale Feedback-Anlaufstelle · RICE-Priorisierung · Höhere Team &amp; Kundenzufriedenheit</span>
+              <span class="t-en">Central feedback hub · RICE prioritization · Higher team &amp; customer satisfaction</span>
+            </div>
+          </div>
+          <div>
+            <button onclick="openModal('modal-3')" class="btn-primary">
+              <span class="t-de">Case Study ansehen</span>
+              <span class="t-en">View Case Study</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CONTACT ═══════════════════ -->
+  <section id="contact" class="contact-bg">
+    <div class="container">
+      <p class="section-eyebrow">
+        <span class="t-de">Kontakt</span>
+        <span class="t-en">Contact</span>
+      </p>
+      <h2 class="section-title">
+        <span class="t-de">Zusammen&shy;arbeiten.</span>
+        <span class="t-en">Let's Work<br>Together.</span>
+      </h2>
+      <p class="section-subtitle">
+        <span class="t-de">Spannendes Projekt? Lass uns großartige User Experiences schaffen.</span>
+        <span class="t-en">Exciting project? Let's create great user experiences together.</span>
+      </p>
+      <div class="contact-card">
+        <div class="contact-inner">
+          <h3>
+            <span class="t-de">Get in Touch.</span>
+            <span class="t-en">Get in Touch.</span>
+          </h3>
+          <div class="contact-rows">
+            <!-- Email -->
+            <div class="contact-row">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div>
+                <p class="contact-label">
+                  <span class="t-de">E-Mail</span>
+                  <span class="t-en">Email</span>
+                </p>
+                <a href="mailto:margarita.udovichenko@gmail.com" class="contact-value">margarita.udovichenko@gmail.com</a>
+              </div>
+            </div>
+            <!-- Phone -->
+            <div class="contact-row">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.13 11.91 19.79 19.79 0 0 1 1.06 3.24 2 2 0 0 1 3.05 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="contact-label">
+                  <span class="t-de">Telefon</span>
+                  <span class="t-en">Phone</span>
+                </p>
+                <a href="tel:+4917654407726" class="contact-value">+49 176 54407726</a>
+              </div>
+            </div>
+            <!-- LinkedIn -->
+            <div class="contact-row">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+                </svg>
+              </div>
+              <div>
+                <p class="contact-label">LinkedIn</p>
+                <a href="https://www.linkedin.com/in/margarita-udovychenko-8b370871/" target="_blank" rel="noopener" class="contact-value">
+                  <span class="t-de">LinkedIn Profil</span>
+                  <span class="t-en">LinkedIn Profile</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ MODAL 1 ═══════════════════ -->
+  <div id="modal-1" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+    <div class="modal-sheet">
+      <button class="modal-close" onclick="closeModal('modal-1')" aria-label="Schließen">✕</button>
+      <div class="modal-hero">
+        <p class="modal-eyebrow">01 / 03 &nbsp;·&nbsp; POLYAS Configurator</p>
+        <h2 class="modal-title" id="modal-1-title">
+          <span class="t-de">Neue Einstiegs&shy;experience</span>
+          <span class="t-en">New Entry Experience</span>
+        </h2>
+        <div class="modal-tags">
+          <span class="badge">Responsive Design</span>
+          <span class="badge">User Research</span>
+          <span class="badge">User Journey</span>
+          <span class="badge">A/B Testing</span>
+        </div>
+      </div>
+      <div class="modal-body">
+
+        <!-- Context -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Kontext &amp; Problem</span>
+            <span class="t-en">Context &amp; Problem</span>
+          </p>
+          <h3 class="modal-section-title">
+            <span class="t-de">Ausgangssituation</span>
+            <span class="t-en">Starting Point</span>
+          </h3>
+          <p class="modal-text">
+            <span class="t-de">Der POLYAS Configurator war der zentrale Einstiegspunkt für B2B-Kunden zur Einrichtung ihrer Online-Wahlen. Die bestehende Login- und Onboarding-Experience führte zu hoher Absprungrate und einem hohen Volumen an Support-Anfragen zum Einstieg ins Produkt – Nutzer:innen fanden sich nicht zurecht.</span>
+            <span class="t-en">The POLYAS Configurator was the central entry point for B2B customers to set up their online elections. The existing login and onboarding experience led to a high bounce rate and a large volume of support requests – users were struggling to find their way.</span>
+          </p>
+          <div class="modal-placeholder">
+            <span class="t-de">Bild: Screenshot Ausgangszustand / Before</span>
+            <span class="t-en">Image: Screenshot of original state / Before</span>
+          </div>
+        </div>
+
+        <!-- Role -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Meine Rolle</span>
+            <span class="t-en">My Role</span>
+          </p>
+          <div class="modal-grid-2">
+            <div class="modal-card">
+              <h4><span class="t-de">Verantwortung</span><span class="t-en">Responsibility</span></h4>
+              <p><span class="t-de">Lead UX/UI Designer – verantwortlich für Research, Konzeption, Prototyping, iterative Evaluation und Übergabe an die Entwicklung.</span><span class="t-en">Lead UX/UI Designer – responsible for research, concept, prototyping, iterative evaluation and developer handoff.</span></p>
+            </div>
+            <div class="modal-card">
+              <h4>Team</h4>
+              <p><span class="t-de">Konzepterarbeitung im Team mit Product Management, Frontend-Entwicklung, Customer Success und Data Analytics.</span><span class="t-en">Concept developed collaboratively with Product Management, Frontend Development, Customer Success and Data Analytics.</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Process -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Prozess</span>
+            <span class="t-en">Process</span>
+          </p>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Research</h4>
+                <p><span class="t-de">Analyse der Support-Tickets, Product Usage Data und Metriken. Aufstellung von Hypothesen und Validierung mit B2B-Kund:innen und Leads.</span><span class="t-en">Analysis of support tickets, product usage data and metrics. Formulation of hypotheses and validation with B2B customers and leads.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4><span class="t-de">User Journey &amp; IA</span><span class="t-en">User Journey &amp; IA</span></h4>
+                <p><span class="t-de">Neues User Journey Mapping für den Einstiegsprozess. Überarbeitung der Informationsarchitektur, Login- und Registrierungsflows sowie Einführung der Möglichkeit, das Produkt ohne Anmeldung zu testen.</span><span class="t-en">New user journey mapping for the onboarding process. Revised information architecture, login and registration flows, plus introduction of a try-without-registration option.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4><span class="t-de">Prototyping &amp; Testing</span><span class="t-en">Prototyping &amp; Testing</span></h4>
+                <p><span class="t-de">Interaktive Figma-Prototypen in mehreren Iterationsstufen. A/B-Tests mit echten Nutzer:innen zur Validierung der neuen Flows.</span><span class="t-en">Interactive Figma prototypes across multiple iteration stages. A/B tests with real users to validate the new flows.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4><span class="t-de">Lösung</span><span class="t-en">Solution</span></h4>
+                <p><span class="t-de">Entwicklung einer neuen Startseite: Zuvor landeten User nach der Anmeldung direkt im technisch wirkenden Dashboard. Die neue Startseite wurde im Kacheldesign gestaltet und passt sich dem Nutzerkontext an – neue User sehen einen klaren „Nächster Schritt"-Flow, Bestandsuser relevante Schnellzugriffe. Inhalte wie nächste Schritte, Support-Optionen und Empfehlungen werden kontextuell eingeblendet.</span><span class="t-en">Development of a new start page: previously, users landed directly in a technically-looking dashboard after login. The new start page uses a tile-based design that adapts to the user's context – new users see a clear "next step" flow, returning users see relevant quick actions. Content such as next steps, support options and recommendations are shown contextually.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h4><span class="t-de">Evaluation &amp; Nachjustierung</span><span class="t-en">Evaluation &amp; Iteration</span></h4>
+                <p><span class="t-de">Auswertung der Post-Launch-Metriken und Nachjustierung auf Basis der Ergebnisse. Einführung regelmäßiger Feature-Promotions, die in den neuen Flow integriert wurden – und direkt zum Upselling beitrugen.</span><span class="t-en">Evaluation of post-launch metrics and iteration based on results. Introduction of regular feature promotions integrated into the new flow – directly contributing to upselling.</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-placeholder">
+            <span class="t-de">Bild: Figma-Screens / Wireframes / Prototyp</span>
+            <span class="t-en">Image: Figma screens / wireframes / prototype</span>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Ergebnisse</span>
+            <span class="t-en">Results</span>
+          </p>
+          <div class="result-stat">
+            <span class="stat-num">−10%</span>
+            <span class="stat-label t-de">Absprungrate nach dem Redesign</span>
+            <span class="stat-label t-en">Bounce rate after redesign</span>
+          </div>
+          <div class="result-stat">
+            <span class="stat-num">−90%</span>
+            <span class="stat-label t-de">Weniger Support-Anfragen zum Thema „Einstieg ins Produkt"</span>
+            <span class="stat-label t-en">Fewer support requests regarding "getting started with the product"</span>
+          </div>
+          <div class="result-stat">
+            <span class="stat-num">+8%</span>
+            <span class="stat-label t-de">Anstieg des durchschnittlichen Warenkorbwertes durch Upselling</span>
+            <span class="stat-label t-en">Increase in average order value through upselling</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ MODAL 2 ═══════════════════ -->
+  <div id="modal-2" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-2-title">
+    <div class="modal-sheet">
+      <button class="modal-close" onclick="closeModal('modal-2')" aria-label="Schließen">✕</button>
+      <div class="modal-hero">
+        <p class="modal-eyebrow">02 / 03 &nbsp;·&nbsp; POLYAS</p>
+        <h2 class="modal-title" id="modal-2-title">New Voting Client</h2>
+        <div class="modal-tags">
+          <span class="badge">Mobile First</span>
+          <span class="badge t-de">Barrierefreiheit</span>
+          <span class="badge t-en">Accessibility</span>
+          <span class="badge">WCAG 2.0</span>
+          <span class="badge">User Testing</span>
+          <span class="badge">Design System</span>
+        </div>
+      </div>
+      <div class="modal-body">
+
+        <!-- Context -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Kontext &amp; Problem</span>
+            <span class="t-en">Context &amp; Problem</span>
+          </p>
+          <h3 class="modal-section-title">
+            <span class="t-de">Ausgangssituation</span>
+            <span class="t-en">Starting Point</span>
+          </h3>
+          <p class="modal-text">
+            <span class="t-de">Der bestehende Voting Client basierte auf einem Design und Workflow aus ca. 2012 mit lediglich kosmetischen Anpassungen aus 2018 – er entsprach nicht mehr den gestiegenen Kundenanforderungen. Ursprünglich für einfache Wahlen mit einem Stimmzettel konzipiert, wollten Kunden zunehmend Wahlen mit mehreren, langen und komplexen Stimmzetteln nutzerfreundlich anbieten.</span>
+            <span class="t-en">The existing Voting Client was based on a design and workflow from around 2012 with only cosmetic updates from 2018 – it no longer met the growing demands of customers. Originally conceived for simple elections with a single ballot, customers increasingly wanted to offer elections with multiple, long and complex ballots in a user-friendly way.</span>
+          </p>
+          <p class="modal-text">
+            <span class="t-de">Die zentralen Probleme: Unübersichtlichkeit, langes Scrollen und häufig unabsichtlich ungültige Stimmen. Das Tabellendesign der Stimmzettel war auf mobilen Geräten nur bedingt responsiv – was zu Frustration bei Kunden und Wahlberechtigten führte und sogar zum Verlust von Aufträgen beitrug. Auch barrierefrei war der alte Client nicht vollständig: Eine Stimmabgabe mit Screenreader war grundsätzlich möglich, jedoch führte das Tabellendesign gerade bei komplexen Wahlen zu erheblicher Frustration bei Screenreader-Nutzer:innen.</span>
+            <span class="t-en">The core problems: poor clarity, excessive scrolling and frequent unintentional invalid votes. The table-based ballot design was only partially responsive on mobile devices – leading to frustration among customers and voters alike, and even contributing to lost contracts. Accessibility was also lacking: while casting a vote with a screen reader was technically possible, the table-based design caused significant frustration for screen reader users, especially in complex elections.</span>
+          </p>
+          <div class="modal-img">
+            <img src="https://portfolioum.lovable.app/assets/project-2-phone-mockup-BHM0p6SZ.png" alt="POLYAS New Voting Client Mockup">
+          </div>
+        </div>
+
+        <!-- Role -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Meine Rolle</span>
+            <span class="t-en">My Role</span>
+          </p>
+          <div class="modal-grid-2">
+            <div class="modal-card">
+              <h4><span class="t-de">Verantwortung</span><span class="t-en">Responsibility</span></h4>
+              <p><span class="t-de">Lead UX/UI Designer – verantwortlich für Recherche, Konzeption, Design System Aufbau, UI Komponenten und Accessibility-Konzept.</span><span class="t-en">Lead UX/UI Designer – responsible for research, concept, design system setup, UI components and accessibility concept.</span></p>
+            </div>
+            <div class="modal-card">
+              <h4><span class="t-de">Umfang</span><span class="t-en">Scope</span></h4>
+              <p><span class="t-de">Komplette Neuentwicklung – von ersten Wireframes, Prototypen und Nutzerinterviews über ein vollständiges, barrierearmes Design System bis zur Umsetzungsbegleitung, Iteration und Evaluation.</span><span class="t-en">Complete new development – from initial wireframes, prototypes and user interviews through a full, low-barrier design system to implementation support, iteration and evaluation.</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Process -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Prozess</span>
+            <span class="t-en">Process</span>
+          </p>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4><span class="t-de">Research &amp; Accessibility Audit</span><span class="t-en">Research &amp; Accessibility Audit</span></h4>
+                <p><span class="t-de">Analyse des Ist-Zustands, WCAG 2.0 Audit des bestehenden Clients, Wettbewerbsanalyse und Nutzerinterviews.</span><span class="t-en">Analysis of current state, WCAG 2.0 audit of existing client, competitive analysis and user interviews.</span></p>
+                <p><span class="t-de">Besondere Herausforderung: Das Produkt wurde für die größte Nutzergruppe konzipiert – die Wahlberechtigten. Bis zu 2 Millionen Menschen stimmen jährlich mit dem Voting Client ab. Aufgrund der hohen Sicherheitsanforderungen und der sensiblen Natur des Produkts durften keine Tracking-Technologien eingesetzt werden, und diese Nutzergruppe konnte nicht direkt kontaktiert werden, da sie rechtlich keine Auftragnehmer sind. Das bedeutete: keine Nutzungsdaten – die Arbeit basierte ausschließlich auf Nutzerfeedback.</span><span class="t-en">Key challenge: the product was designed for the largest user group – the voters. Up to 2 million people cast their votes via the Voting Client each year. Due to strict security requirements and the sensitive nature of the product, no tracking technologies could be used, and this user group could not be contacted directly as they are not contractual clients. This meant: no usage data – the work was based entirely on user feedback.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4><span class="t-de">Prototyping, Prototyping, Prototyping</span><span class="t-en">Prototyping, Prototyping, Prototyping</span></h4>
+                <p><span class="t-de">Nach der Analyse aller Pain Points wurden erste Konzepte erarbeitet, aus denen Prototypen mit unterschiedlichen Annahmen entstanden. Diese wurden in mehreren Testrunden validiert und iterativ weiterentwickelt.</span><span class="t-en">After analysing all pain points, initial concepts were developed, from which prototypes with different assumptions were created. These were validated across multiple test rounds and iteratively refined.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4><span class="t-de">Lösung</span><span class="t-en">Solution</span></h4>
+                <p><span class="t-de">Entwicklung eines Mobile-First UI Designs mit einem neuen Workflow für Wahlen mit mehreren Stimmzetteln. Unter Beachtung der UX-Heuristiken wurde Progressive Disclosure intensiv eingesetzt sowie Visibility of System Status, Error Prevention und Consistency konsequent umgesetzt. Das Tabellendesign wurde durch ein Kacheldesign ersetzt – übersichtlicher, verständlicher und deutlich zugänglicher für Screenreader-Nutzer:innen. Iterativ wurden Designs für zwei weitere Breakpoints (Tablet und Desktop) mit entsprechender Skalierung entwickelt.</span><span class="t-en">Development of a mobile-first UI design with a new workflow for elections with multiple ballots. Applying UX heuristics, progressive disclosure was used extensively alongside consistent application of visibility of system status, error prevention and consistency. The table-based design was replaced with a tile-based layout – clearer, more intuitive and significantly more accessible for screen reader users. Designs for two additional breakpoints (tablet and desktop) were developed iteratively with appropriate scaling.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Design System</h4>
+                <p><span class="t-de">Entwicklung eines Design Systems auf Basis der MUI-Bibliothek. Die Figma-Komponentenbibliothek diente als Grundlage für die Implementierung in Storybook – als gemeinsame Quelle der Wahrheit für Design und Entwicklung.</span><span class="t-en">Development of a design system based on the MUI library. The Figma component library served as the foundation for the implementation in Storybook – as a shared source of truth for design and development.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h4><span class="t-de">Umsetzung</span><span class="t-en">Implementation</span></h4>
+                <p><span class="t-de">Die Umsetzung erfolgt in mehreren Schritten: Das MVP ist bereits released und kann von Kunden mit bestimmtem Feature-Setup genutzt werden. Mehrere Pilotkunden haben das System bereits eingesetzt, über 400 Menschen haben damit abgestimmt. Parallel läuft die weitere Entwicklung, um im iterativen Prozess Feature Parity zum alten Client herzustellen. Der vollständige Product Launch ist für Januar 2027 geplant.</span><span class="t-en">Implementation is taking place in multiple stages: the MVP has already been released and can be used by customers with a specific feature setup. Several pilot customers have already used the system, with over 400 people having cast their votes. Parallel development continues to iteratively achieve feature parity with the old client. The full product launch is planned for January 2027.</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-placeholder">
+            <span class="t-de">Bild: Design System / UI Komponenten</span>
+            <span class="t-en">Image: Design system / UI components</span>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Projektergebnisse</span>
+            <span class="t-en">Project Results</span>
+          </p>
+          <div class="result-stat">
+            <span class="stat-num">✓</span>
+            <span class="stat-label t-de">MVP im Einsatz bei Pilotkunden</span>
+            <span class="stat-label t-en">MVP live with pilot customers</span>
+          </div>
+          <div class="result-stat">
+            <span class="stat-num">400+</span>
+            <span class="stat-label t-de">Stimmabgaben über den neuen Voting Client</span>
+            <span class="stat-label t-en">Votes cast via the new Voting Client</span>
+          </div>
+          <div class="result-stat">
+            <span class="stat-num">87</span>
+            <span class="stat-label t-de">SUS Score (System Usability Scale)</span>
+            <span class="stat-label t-en">SUS Score (System Usability Scale)</span>
+          </div>
+          <div class="result-stat">
+            <span class="stat-num">✓</span>
+            <span class="stat-label t-de">WCAG 2.0 AA Standard erfüllt</span>
+            <span class="stat-label t-en">WCAG 2.0 AA standard met</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ MODAL 3 ═══════════════════ -->
+  <div id="modal-3" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-3-title">
+    <div class="modal-sheet">
+      <button class="modal-close" onclick="closeModal('modal-3')" aria-label="Schließen">✕</button>
+      <div class="modal-hero">
+        <p class="modal-eyebrow">03 / 03 &nbsp;·&nbsp; POLYAS</p>
+        <h2 class="modal-title" id="modal-3-title">
+          <span class="t-de">Neuer Feedback&shy;prozess</span>
+          <span class="t-en">New Feedback Process</span>
+        </h2>
+        <div class="modal-tags">
+          <span class="badge t-de">Workshop-Moderation</span>
+          <span class="badge t-en">Workshop Facilitation</span>
+          <span class="badge t-de">Prozessdesign</span>
+          <span class="badge t-en">Process Design</span>
+          <span class="badge">RICE</span>
+          <span class="badge">Jira</span>
+          <span class="badge">Stakeholder Management</span>
+        </div>
+      </div>
+      <div class="modal-body">
+
+        <!-- Context -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Kontext &amp; Problem</span>
+            <span class="t-en">Context &amp; Problem</span>
+          </p>
+          <h3 class="modal-section-title">
+            <span class="t-de">Ausgangssituation</span>
+            <span class="t-en">Starting Point</span>
+          </h3>
+          <p class="modal-text">
+            <span class="t-de">Bei POLYAS fehlte ein strukturierter Prozess zur Sammlung und Priorisierung von Nutzerfeedback. Feedback kam über verschiedene Kanäle (Support, Sales, CS) ungefiltert ins Team – ohne klare Priorisierung oder Transparenz für die Stakeholder.</span>
+            <span class="t-en">At POLYAS, there was no structured process for collecting and prioritizing user feedback. Feedback came into the team unfiltered through various channels (support, sales, CS) – without clear prioritization or transparency for stakeholders.</span>
+          </p>
+          <div class="modal-img">
+            <img src="https://portfolioum.lovable.app/assets/feedback-kanban-framed-DdpPBhUO.png" alt="Feedback Kanban Board">
+          </div>
+        </div>
+
+        <!-- Role -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Meine Rolle</span>
+            <span class="t-en">My Role</span>
+          </p>
+          <div class="modal-grid-2">
+            <div class="modal-card">
+              <h4><span class="t-de">Verantwortung</span><span class="t-en">Responsibility</span></h4>
+              <p><span class="t-de">Initiative, Konzeption und Umsetzung des gesamten Feedback-Prozesses – von der Workshop-Moderation bis zum Jira-Setup.</span><span class="t-en">Initiative, design and implementation of the entire feedback process – from workshop facilitation to Jira setup.</span></p>
+            </div>
+            <div class="modal-card">
+              <h4><span class="t-de">Beteiligte Teams</span><span class="t-en">Teams Involved</span></h4>
+              <p><span class="t-de">Product Management, Customer Success, Sales, Support und Entwicklungsteam.</span><span class="t-en">Product Management, Customer Success, Sales, Support and Development team.</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Process -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Prozess</span>
+            <span class="t-en">Process</span>
+          </p>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4><span class="t-de">Ist-Analyse &amp; Stakeholder-Interviews</span><span class="t-en">Current State Analysis &amp; Stakeholder Interviews</span></h4>
+                <p><span class="t-de">Interviews mit allen beteiligten Teams zur Erfassung des Ist-Zustands, bestehender Pain Points und Anforderungen.</span><span class="t-en">Interviews with all involved teams to capture current state, existing pain points and requirements.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4><span class="t-de">Workshop-Serie</span><span class="t-en">Workshop Series</span></h4>
+                <p><span class="t-de">Moderierte Workshops zur gemeinsamen Definition des neuen Prozesses, Klärung von Rollen &amp; Verantwortlichkeiten und Alignment aller Stakeholder.</span><span class="t-en">Facilitated workshops to jointly define the new process, clarify roles &amp; responsibilities and align all stakeholders.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4><span class="t-de">RICE-Priorisierung</span><span class="t-en">RICE Prioritization</span></h4>
+                <p><span class="t-de">Einführung des RICE-Scoring-Frameworks (Reach, Impact, Confidence, Effort) zur objektiven Priorisierung von Feedback-Items.</span><span class="t-en">Introduction of the RICE scoring framework (Reach, Impact, Confidence, Effort) for objective prioritization of feedback items.</span></p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Jira Board Setup</h4>
+                <p><span class="t-de">Aufbau eines zentralen Jira-Boards als Single Source of Truth für gesammeltes Feedback – mit Workflows, Labels und automatisierten Statusübergängen.</span><span class="t-en">Setup of a central Jira board as single source of truth for collected feedback – with workflows, labels and automated status transitions.</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-placeholder">
+            <span class="t-de">Bild: Workshop-Ergebnis / Jira-Board Setup</span>
+            <span class="t-en">Image: Workshop outcome / Jira board setup</span>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="modal-section">
+          <p class="modal-section-label">
+            <span class="t-de">Ergebnisse</span>
+            <span class="t-en">Results</span>
+          </p>
+          <div class="result-stat">
+            <span class="stat-num">✓</span>
+            <span class="stat-label t-de">Zentrale Feedback-Anlaufstelle – ein Kanal für alle Teams</span>
+            <span class="stat-label t-en">Central feedback hub – one channel for all teams</span>
+          </div>
+          <div class="result-stat">
+            <span class="stat-num">✓</span>
+            <span class="stat-label t-de">RICE-Priorisierung als Standard im gesamten Produktteam etabliert</span>
+            <span class="stat-label t-en">RICE prioritization established as standard across the entire product team</span>
+          </div>
+          <div class="result-stat">
+            <span class="stat-num">✓</span>
+            <span class="stat-label t-de">Höhere Transparenz und Zufriedenheit bei Team &amp; Kunden</span>
+            <span class="stat-label t-en">Higher transparency and satisfaction across team &amp; customers</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer>
+    <p class="line1">
+      <span class="t-de">© 2025 Margarita Udovychenko. Alle Rechte vorbehalten.</span>
+      <span class="t-en">© 2025 Margarita Udovychenko. All rights reserved.</span>
+    </p>
+    <p class="line2">
+      <span class="t-de">Erstellt mit Leidenschaft für nutzerzentriertes Design</span>
+      <span class="t-en">Created with passion for user-centered design</span>
+    </p>
+  </footer>
+
+  <script>
+    // ── Language switcher ──
+    function setLang(lang) {
+      const html = document.documentElement;
+      if (lang === 'en') {
+        html.classList.add('lang-en');
+        html.lang = 'en';
+      } else {
+        html.classList.remove('lang-en');
+        html.lang = 'de';
+      }
+      ['btn-de','btn-en','btn-de-m','btn-en-m'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        const isActive = (id.includes('de') && lang === 'de') || (id.includes('en') && lang === 'en');
+        btn.classList.toggle('active', isActive);
+      });
+    }
+
+    // ── Navbar scroll ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    // ── Mobile menu ──
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    }
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobile-menu');
+      const hamburger = document.getElementById('hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // ── Modal ──
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modal.scrollTop = 0;
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    // Close on overlay click (outside sheet)
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal(overlay.id);
+      });
+    });
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+      }
+    });
+  </script>
+</body>
+</html>
