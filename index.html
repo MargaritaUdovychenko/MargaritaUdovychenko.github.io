@@ -122,6 +122,9 @@
     }
     .mobile-menu a:last-child { border-bottom: none; }
     .mobile-menu a:hover { color: var(--pink); }
+    .mobile-menu a.t-en { display: none; }
+    html.lang-en .mobile-menu a.t-de { display: none; }
+    html.lang-en .mobile-menu a.t-en { display: block; }
 
     /* ── Hero ── */
     .hero {
@@ -447,6 +450,7 @@
       color: var(--off-white); font-weight: 400;
       text-decoration: none; font-size: 0.92rem;
       transition: color 0.2s;
+      word-break: break-all;
     }
     .contact-value:hover { color: var(--pink); }
 
@@ -698,6 +702,18 @@
         height: clamp(260px, 80vw, 400px);
         bottom: -6%; right: -14%;
       }
+      .search-box {
+        position: fixed;
+        top: 60px; left: 0; right: 0;
+        transform: none;
+        width: 100%;
+        border: none;
+        border-top: 2px solid var(--pink);
+        border-bottom: 1px solid var(--warm-gray);
+        background: var(--off-white);
+        z-index: 300;
+      }
+      .search-box input { font-size: 1rem; padding: 0.75rem 1rem; }
     }
     @media (min-width: 768px) {
       .nav-mobile-right { display: none; }
@@ -734,8 +750,13 @@
         </div>
       </div>
 
-      <!-- Mobile: lang + hamburger -->
+      <!-- Mobile: search + lang + hamburger -->
       <div class="nav-mobile-right">
+        <div class="search-wrap" id="search-wrap-m">
+          <button class="search-toggle" id="search-toggle-m" onclick="toggleSearch()" aria-label="Suche">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+        </div>
         <div class="lang-switcher">
           <button class="lang-btn active" id="btn-de-m" onclick="setLang('de')">DE</button>
           <button class="lang-btn" id="btn-en-m" onclick="setLang('en')">EN</button>
@@ -1028,14 +1049,6 @@
       <p class="section-eyebrow">
         <span class="t-de">Kontakt</span>
         <span class="t-en">Contact</span>
-      </p>
-      <h2 class="section-title">
-        <span class="t-de">Zusammen&shy;arbeiten.</span>
-        <span class="t-en">Let's Work<br>Together.</span>
-      </h2>
-      <p class="section-subtitle">
-        <span class="t-de">Spannendes Projekt? Lass uns großartige User Experiences schaffen.</span>
-        <span class="t-en">Exciting project? Let's create great user experiences together.</span>
       </p>
       <div class="contact-card">
         <div class="contact-inner">
@@ -1584,7 +1597,7 @@
       const box = document.getElementById('search-box');
       box.classList.toggle('open');
       if (box.classList.contains('open')) {
-        document.getElementById('search-input').focus();
+        setTimeout(() => document.getElementById('search-input').focus(), 50);
       } else {
         clearSearch();
       }
