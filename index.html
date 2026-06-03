@@ -600,6 +600,83 @@
       margin: 1.5rem 0;
     }
 
+    /* ── Search ── */
+    .search-wrap { position: relative; display: flex; align-items: center; }
+    .search-toggle {
+      background: none; border: none; cursor: pointer;
+      color: var(--black); padding: 4px;
+      display: flex; align-items: center;
+      transition: color 0.2s;
+    }
+    .search-toggle:hover { color: var(--pink); }
+    .search-box {
+      display: none; align-items: center;
+      position: absolute; right: 28px; top: 50%; transform: translateY(-50%);
+      background: var(--off-white);
+      border: 1px solid var(--warm-gray);
+      width: 220px;
+    }
+    .search-box.open { display: flex; }
+    .search-box input {
+      flex: 1; border: none; background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; padding: 0.45rem 0.75rem;
+      outline: none; color: var(--black);
+    }
+    .search-clear {
+      background: none; border: none; cursor: pointer;
+      color: var(--mid-gray); padding: 0 0.5rem;
+      font-size: 0.75rem;
+    }
+    .search-clear:hover { color: var(--pink); }
+    .search-results {
+      display: none;
+      position: fixed; top: 60px; left: 0; right: 0;
+      z-index: 200;
+      background: var(--off-white);
+      border-top: 2px solid var(--pink);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      max-height: 70vh; overflow-y: auto;
+    }
+    .search-results.open { display: block; }
+    .search-results-inner { max-width: 800px; margin: 0 auto; padding: 1.5rem 2rem; }
+    .search-result-label {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mid-gray); margin-bottom: 1rem;
+    }
+    .search-result-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--warm-gray);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-item:hover .search-result-title { color: var(--pink); }
+    .search-result-section {
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--pink); margin-bottom: 0.25rem;
+    }
+    .search-result-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 800;
+      text-transform: uppercase; color: var(--black);
+      transition: color 0.2s;
+    }
+    .search-result-snippet {
+      font-size: 0.85rem; color: var(--mid-gray);
+      margin-top: 0.2rem; line-height: 1.5;
+    }
+    .search-result-snippet mark {
+      background: var(--pink-20); color: var(--black);
+      padding: 0 2px;
+    }
+    .search-no-results {
+      font-size: 0.92rem; color: var(--mid-gray);
+      padding: 1rem 0;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 767px) {
       .nav-links { display: none; }
@@ -628,6 +705,15 @@
         <a href="#projects" class="t-en">Projects</a>
         <a href="#contact" class="t-de">Kontakt</a>
         <a href="#contact" class="t-en">Contact</a>
+        <div class="search-wrap" id="search-wrap">
+          <button class="search-toggle" id="search-toggle" onclick="toggleSearch()" aria-label="Suche">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <div class="search-box" id="search-box">
+            <input type="text" id="search-input" placeholder="Suchen..." oninput="runSearch(this.value)" autocomplete="off">
+            <button onclick="clearSearch()" class="search-clear" id="search-clear">✕</button>
+          </div>
+        </div>
         <div class="lang-switcher">
           <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
           <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
@@ -1419,6 +1505,14 @@
     </div>
   </div>
 
+  <!-- ═══════════════════ SEARCH RESULTS ═══════════════════ -->
+  <div id="search-results" class="search-results" role="region">
+    <div class="search-results-inner">
+      <p class="search-result-label" id="search-result-label"></p>
+      <div id="search-result-list"></div>
+    </div>
+  </div>
+
   <!-- ═══════════════════ FOOTER ═══════════════════ -->
   <footer>
     <p class="line1">
@@ -1432,6 +1526,108 @@
   </footer>
 
   <script>
+    // ── Search ──
+    const searchData = [
+      {
+        section: { de: 'Über mich', en: 'About' },
+        title: { de: 'Hallo! Ich bin Rita.', en: 'Hi! I\'m Rita.' },
+        content: { de: 'Product Designerin 4+ Jahre Erfahrung Projektmanagement POLYAS B2B SaaS Produkte Research Umsetzung Erfolgsmessung Systeme Business Technologie Nutzer', en: 'Product Designer 4+ years experience project management POLYAS B2B SaaS products research implementation measurement systems business technology user' },
+        action: () => { document.getElementById('about').scrollIntoView({behavior:'smooth'}); }
+      },
+      {
+        section: { de: 'Case Study 01', en: 'Case Study 01' },
+        title: { de: 'Neue Einstiegsexperience – POLYAS Configurator', en: 'New Entry Experience – POLYAS Configurator' },
+        content: { de: 'Einstieg Login Onboarding Absprungrate Support Responsive Design User Research User Journey A/B Testing Startseite Kacheldesign Upselling -10% -90% +8%', en: 'onboarding login bounce rate support responsive design user research user journey A/B testing start page tile design upselling -10% -90% +8%' },
+        action: () => { openModal('modal-1'); }
+      },
+      {
+        section: { de: 'Case Study 02', en: 'Case Study 02' },
+        title: { de: 'POLYAS New Voting Client', en: 'POLYAS New Voting Client' },
+        content: { de: 'Mobile First Barrierefreiheit Accessibility WCAG 2.0 User Testing Design System Stimmzettel Voting Wahl Pilotkunden SUS Score 87 400 Stimmen MUI Storybook', en: 'mobile first accessibility WCAG 2.0 user testing design system ballot voting election pilot customers SUS score 87 400 votes MUI Storybook' },
+        action: () => { openModal('modal-2'); }
+      },
+      {
+        section: { de: 'Case Study 03', en: 'Case Study 03' },
+        title: { de: 'Neuer Feedback-Prozess', en: 'New Feedback Process' },
+        content: { de: 'Feedback Workshop RICE Priorisierung Jira Kanban Prozessdesign Stakeholder Management Sales Customer Success Support Leadership Bestandskunden SaaS Umfragen intern extern Chaos Klarheit', en: 'feedback workshop RICE prioritization Jira Kanban process design stakeholder management Sales Customer Success Support Leadership existing customers SaaS surveys internal external chaos clarity' },
+        action: () => { openModal('modal-3'); }
+      },
+      {
+        section: { de: 'Expertise', en: 'Expertise' },
+        title: { de: 'Design & Tools', en: 'Design & Tools' },
+        content: { de: 'Figma Adobe InDesign Miro After Effects User Research Usability Testing Heuristische Evaluation User Journey Mapping Informationsarchitektur Accessibility WCAG Design Thinking RICE Stakeholder OKR Design System Agile Scrum Kanban Workshop Developer Handoff Figma Make Claude Code Midjourney Notion AI Cursor', en: 'Figma Adobe InDesign Miro After Effects User Research Usability Testing Heuristic Evaluation User Journey Mapping Information Architecture Accessibility WCAG Design Thinking RICE Stakeholder OKR Design System Agile Scrum Kanban Workshop Developer Handoff Figma Make Claude Code Midjourney Notion AI Cursor' },
+        action: () => { document.getElementById('about').scrollIntoView({behavior:'smooth'}); }
+      },
+      {
+        section: { de: 'Kontakt', en: 'Contact' },
+        title: { de: 'Get in Touch', en: 'Get in Touch' },
+        content: { de: 'E-Mail Telefon LinkedIn Kontakt', en: 'email phone LinkedIn contact' },
+        action: () => { document.getElementById('contact').scrollIntoView({behavior:'smooth'}); }
+      }
+    ];
+
+    function toggleSearch() {
+      const box = document.getElementById('search-box');
+      box.classList.toggle('open');
+      if (box.classList.contains('open')) {
+        document.getElementById('search-input').focus();
+      } else {
+        clearSearch();
+      }
+    }
+
+    function clearSearch() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('search-results').classList.remove('open');
+      document.getElementById('search-box').classList.remove('open');
+    }
+
+    function runSearch(query) {
+      const resultsEl = document.getElementById('search-results');
+      const listEl = document.getElementById('search-result-list');
+      const labelEl = document.getElementById('search-result-label');
+      const lang = document.documentElement.classList.contains('lang-en') ? 'en' : 'de';
+      const q = query.trim().toLowerCase();
+
+      if (!q) { resultsEl.classList.remove('open'); return; }
+
+      const matches = searchData.filter(item => {
+        const text = (item.title[lang] + ' ' + item.content[lang]).toLowerCase();
+        return text.includes(q);
+      });
+
+      listEl.innerHTML = '';
+
+      if (matches.length === 0) {
+        listEl.innerHTML = `<p class="search-no-results">${lang === 'de' ? 'Keine Ergebnisse gefunden.' : 'No results found.'}</p>`;
+        labelEl.textContent = '';
+      } else {
+        labelEl.textContent = lang === 'de' ? `${matches.length} Ergebnis${matches.length > 1 ? 'se' : ''} für „${query}"` : `${matches.length} result${matches.length > 1 ? 's' : ''} for "${query}"`;
+        matches.forEach(item => {
+          const snippet = item.content[lang].split(' ').filter(w => w.toLowerCase().includes(q)).slice(0,6).join(' · ');
+          const div = document.createElement('div');
+          div.className = 'search-result-item';
+          div.innerHTML = `
+            <p class="search-result-section">${item.section[lang]}</p>
+            <p class="search-result-title">${item.title[lang]}</p>
+            ${snippet ? `<p class="search-result-snippet">${snippet.replace(new RegExp(q, 'gi'), m => `<mark>${m}</mark>`)}</p>` : ''}
+          `;
+          div.addEventListener('click', () => { clearSearch(); setTimeout(item.action, 100); });
+          listEl.appendChild(div);
+        });
+      }
+      resultsEl.classList.add('open');
+    }
+
+    // Close search on outside click
+    document.addEventListener('click', (e) => {
+      const wrap = document.getElementById('search-wrap');
+      const results = document.getElementById('search-results');
+      if (!wrap.contains(e.target) && !results.contains(e.target)) {
+        clearSearch();
+      }
+    });
+
     // ── Language switcher ──
     function setLang(lang) {
       const html = document.documentElement;
