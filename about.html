@@ -737,6 +737,7 @@
         html.classList.remove('lang-en');
         html.lang = 'de';
       }
+      localStorage.setItem('lang', lang);
       ['btn-de','btn-en','btn-de-m','btn-en-m'].forEach(id => {
         const btn = document.getElementById(id);
         if (!btn) return;
@@ -748,6 +749,11 @@
       if (cvDe) cvDe.style.display = lang === 'de' ? 'inline-flex' : 'none';
       if (cvEn) cvEn.style.display = lang === 'en' ? 'inline-flex' : 'none';
     }
+    // Restore saved language on load
+    (function() {
+      const saved = localStorage.getItem('lang');
+      if (saved && saved !== 'de') setLang(saved);
+    })();
 
     // ── Nav scroll behaviour ──
     const navbar = document.getElementById('navbar');

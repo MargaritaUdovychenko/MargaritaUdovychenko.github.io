@@ -1334,6 +1334,7 @@
         html.classList.remove('lang-en');
         html.lang = 'de';
       }
+      localStorage.setItem('lang', lang);
       ['btn-de','btn-en','btn-de-m','btn-en-m'].forEach(id => {
         const btn = document.getElementById(id);
         if (!btn) return;
@@ -1348,6 +1349,11 @@
         imgEn.style.display = lang === 'en' ? 'block' : 'none';
       }
     }
+    // Restore saved language on load
+    (function() {
+      const saved = localStorage.getItem('lang');
+      if (saved && saved !== 'de') setLang(saved);
+    })();
 
     // ── Navbar scroll ──
     const navbar = document.getElementById('navbar');
